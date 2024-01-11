@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4B5320;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+.wrapper {
+    margin: 20px; /* Adicionando um espaçamento ao redor do wrapper */
+    overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px; 
+}
+
+.input-field {
+    opacity: 0.8;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+.input-field::-webkit-inner-spin-button,
+.input-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#resultTableContainer {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#resultTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#resultTable th,
+#resultTable td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+#resultTable th {
+    background-color: #333;
+    color: #fff;
+}
+
+#resultTable tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#resultTable tbody tr:nth-child(odd) {
+    background-color: #dcdcdc;
+}
+
+#logo {
+    width: 250px;
+    margin-bottom: 50px;
+}
