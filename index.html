@@ -9,8 +9,8 @@
   </head>
 
   <body>
+    <img src="./logo.png" alt="Logo Caça e Pesca" id="logo" />
     <div class="wrapper">
-      <img src="./logo.png" alt="Logo Caça e Pesca" id="logo" />
       <div class="container">
         <label for="fator">Fator de Multiplicação:</label>
         <input
@@ -31,21 +31,24 @@
           onkeydown="calcular(event)"
         />
 
-        <h3 id="resultado">Preço Final: 0.00</h3>
-      </div>
-      <!-- Adicione dentro do corpo (body) do seu HTML -->
-      <table id="resultTable">
-        <thead>
-          <tr>
-            <th>Produto</th>
-            <th>Preço</th>
-          </tr>
-        </thead>
-        <tbody id="resultBody"></tbody>
-      </table>
+        <h3 id="resultado">Preço Final: R$ 0.00</h3>
+        <div id="resultTableContainer">
+            <table id="resultTable">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Unitário Líquido</th>
+                        <th>Preço Final</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Conteúdo da tabela -->
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <script src="./script.js"></script>
+</div>
+<script src="script.js"></script>
     <footer>
         <h6>Criado por Mateus Santos & ChatGPT - Caça & Pesca 2024</h6>
     </footer>
