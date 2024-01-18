@@ -53,3 +53,18 @@ function adicionarResultadoTabela(resultado) {
     cellPrecoFinal.textContent = `R$ ${resultado.toFixed(2)}`;
 }
 
+function apagarUltimaEntrada() {
+    const table = document.getElementById('resultTable');
+    const tbody = table.getElementsByTagName('tbody')[0];
+
+    // Verifica se há linhas na tabela
+    if (tbody.rows.length > 0) {
+        // Remove a última linha
+        tbody.deleteRow(tbody.rows.length - 1);
+        // Reduz o contador de produto
+        contadorProduto--;
+    } else {
+        alert("A tabela está vazia. Não há entradas para apagar.");
+    }
+}
+

@@ -28,7 +28,7 @@ body {
     margin-bottom: 15px; 
 }
 
-.input-field {
+.input-field, button {
     opacity: 0.8;
     margin-bottom: 20px;
     padding: 10px;
@@ -84,4 +84,9 @@ body {
     width: 250px;
     margin-bottom: 50px;
     margin-top: 20px;
+}
+
+button{
+    background-color: #fff;
+    opacity: 1;
 }
