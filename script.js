@@ -27,7 +27,7 @@ function calcular(event) {
             resultado = Math.ceil(resultado);
         }
 
-        document.getElementById('resultado').innerText = `Preço Final: R$ ${resultado.toFixed(2)}`;
+        document.getElementById('resultado').innerText = `Preço Final: <spam class="vlr"> R$ ${resultado.toFixed(2)} </spam>`;
         adicionarResultadoTabela(resultado);
 
         document.getElementById('preco').value = '';
