@@ -18,6 +18,7 @@ body {
 .wrapper {
     margin: 20px; /* Adicionando um espaçamento ao redor do wrapper */
     overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
+    padding: 50px;
 }
 
 .container {
@@ -28,16 +29,32 @@ body {
     margin-bottom: 15px; 
 }
 
-.input-field, button {
+.input-field, button{
     opacity: 0.8;
     margin-bottom: 20px;
     padding: 10px;
     border: none;
     outline: none;
     font-size: 20px;
+    text-align: center;
     margin-top: 10px;
     border-radius: 5px;
-    width: 100%;
+    max-width: 250px;
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+}
+
+#htmlInput {
+    opacity: 1;
+    margin-bottom: 10px;
+    /* padding: 10px; */
+    border: none;
+    outline: none;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 0px;
+    max-width: 450px;
     box-sizing: border-box;
     -moz-appearance: textfield;
 }
@@ -54,20 +71,30 @@ body {
     margin-bottom: 50px;
 }
 
-#resultTable {
+#resultTable, #tabelaRenderizada, table {
     width: 100%;
     border-collapse: collapse;
 }
 
+table thead{
+    background-color: #fff;
+    color: #dcdcdc;
+}
 #resultTable th,
-#resultTable td {
+#resultTable td,
+#tabelaRenderizada td,
+#tabelaRenderizada th,
+table td,
+table th {
     padding: 10px;
     text-align: center;
     border: 1px solid #ddd;
     color: #333;
 }
 
-#resultTable th {
+#resultTable th,
+#tabelaRenderizada th,
+table th {
     background-color: #333;
     color: #fff;
 }
@@ -77,6 +104,22 @@ body {
 }
 
 #resultTable tbody tr:nth-child(odd) {
+    background-color: #dcdcdc;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #dcdcdc;
+}
+
+#tabelaRenderizada tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#tabelaRenderizada tbody tr:nth-child(odd) {
     background-color: #dcdcdc;
 }
 
@@ -91,7 +134,58 @@ button{
     opacity: 1;
 }
 
-.vlr{
-    color: red;
-    font-size: 25px;
+
+
+
+/* IMPRESSÃO */
+
+/* Estilo específico para a página de impressão */
+@media print {
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        color: black;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Remover logo e input de file */
+    img, #htmlInput, button, .impt {
+        display: none;
+    }
+
+    table {
+        width: 100%;
+    }
+    tr, td, th {
+        padding: 0;
+        margin: 0;
+    }
+    .wrapper {
+        margin: 0px; /* Adicionando um espaçamento ao redor do wrapper */
+        overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
+        padding: 0px;
+    }
+    label {
+        font-size: 20px;
+    }
+    #resultTable th,
+#resultTable td,
+#tabelaRenderizada td,
+#tabelaRenderizada th,
+table td,
+table th {
+    padding: 02px;
+    text-align: center;
+    border: 1px solid #ddd;
+    color: #333;
+}
+#resultTableContainer{
+    margin-top: -40px;
+}
+
 }
