@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <p><a class="doc" href="https://pacdt.github.io/calc-cacaepesca-doc/" target="_blank">Como usar?</a></p>
     <div class="wrapper">
       <div class="container">
         <img id="logo" src="logo.png" alt="Logo" />
@@ -16,7 +17,11 @@
         <input type="number" id="fator" class="input-field" step="0.01" />
         <label class="impt" for="htmlInput">Importar HTML</label>
         <input type="file" id="htmlInput" accept=".HTM" />
-        <button onclick="gerarPrecos()">Gerar Preços</button>
+        <div id="btns">
+          <button onclick="gerarPrecos()">Gerar Preços</button>
+          <button onclick="imprimirPagina()">Imprimir</button>
+        </div>
+        <p id="nomeArquivo"></p>
         <div id="resultTableContainer">
         <div id="tabelaContainer"></div>
         </div>
