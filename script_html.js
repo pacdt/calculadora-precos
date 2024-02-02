@@ -1,3 +1,5 @@
+let nomeArquivoHTML = ''
+
 // Função principal para gerar preços
 function gerarPrecos() {
     const htmlInput = document.getElementById('htmlInput');
@@ -5,6 +7,9 @@ function gerarPrecos() {
 
     const file = htmlInput.files[0];
     const fatorMultiplicacao = fatorInput.value.trim(); // Obtendo o valor do fator de multiplicação
+    
+    nomeArquivoHTML = file.name;
+    document.getElementById('nomeArquivo').innerText = `${nomeArquivoHTML}`;
 
     if (!file || fatorMultiplicacao === '') {
         alert("Selecione um arquivo HTML e informe o Fator de Multiplicação!");
@@ -201,5 +206,16 @@ function armazenarValoresColuna(tabela, indiceColuna, objeto) {
 
         // Armazenar valor na propriedade correspondente do objeto
         objeto[`Produto${i + 1}`] = valorCelula;
+    }
+}
+
+function imprimirPagina() {
+    // Verifica se há uma tabela gerada
+    const tabelaGerada = document.getElementById('tabelaContainer').querySelector('table');
+    
+    if (tabelaGerada) {
+        window.print();
+    } else {
+        alert("Você precisa gerar uma tabela antes de imprimir.");
     }
 }
