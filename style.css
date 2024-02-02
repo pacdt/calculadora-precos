@@ -1,84 +1,88 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #4B5320;
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin: 0;
+  background-color: #4b5320;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  padding: 15px;
 }
 
 .wrapper {
-    margin: 20px; /* Adicionando um espaçamento ao redor do wrapper */
-    overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
-    padding: 50px;
+  margin: 20px; /* Adicionando um espaçamento ao redor do wrapper */
+  overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
+  padding: 50px;
 }
 
 .container {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px; 
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
-.input-field, button{
-    opacity: 0.8;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 10px;
-    border-radius: 5px;
-    max-width: 250px;
-    box-sizing: border-box;
-    -moz-appearance: textfield;
+.input-field,
+button {
+  opacity: 0.8;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 5px;
+  max-width: 250px;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
 }
 
 #htmlInput {
-    opacity: 1;
-    margin-bottom: 10px;
-    /* padding: 10px; */
-    border: none;
-    outline: none;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 10px;
-    border-radius: 0px;
-    max-width: 450px;
-    box-sizing: border-box;
-    -moz-appearance: textfield;
+  opacity: 1;
+  margin-bottom: 10px;
+  /* padding: 10px; */
+  border: none;
+  outline: none;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 0px;
+  max-width: 450px;
+  box-sizing: border-box;
+  -moz-appearance: textfield;
 }
 
 .input-field::-webkit-inner-spin-button,
 .input-field::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #resultTableContainer {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 50px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
-#resultTable, #tabelaRenderizada, table {
-    width: 100%;
-    border-collapse: collapse;
+#resultTable,
+#tabelaRenderizada,
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-table thead{
-    background-color: #fff;
-    color: #dcdcdc;
+table thead {
+  background-color: #fff;
+  color: #dcdcdc;
 }
 #resultTable th,
 #resultTable td,
@@ -86,106 +90,141 @@ table thead{
 #tabelaRenderizada th,
 table td,
 table th {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #ddd;
-    color: #333;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  color: #333;
 }
 
 #resultTable th,
 #tabelaRenderizada th,
 table th {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
 }
 
 #resultTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 #resultTable tbody tr:nth-child(odd) {
-    background-color: #dcdcdc;
+  background-color: #dcdcdc;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 table tbody tr:nth-child(odd) {
-    background-color: #dcdcdc;
+  background-color: #dcdcdc;
 }
 
 #tabelaRenderizada tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 #tabelaRenderizada tbody tr:nth-child(odd) {
-    background-color: #dcdcdc;
+  background-color: #dcdcdc;
 }
 
 #logo {
-    width: 250px;
-    margin-bottom: 50px;
-    margin-top: 20px;
+  width: 250px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }
 
-button{
-    background-color: #fff;
-    opacity: 1;
+button {
+  background-color: #fff;
+  opacity: 1;
+}
+button:hover {
+  cursor: pointer;
 }
 
-
-
+.doc {
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 10px;
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+.doc:hover {
+  background-color: #fff;
+  color: #333;
+}
+#nomeArquivo{
+    display: none;
+}
 
 /* IMPRESSÃO */
 
 /* Estilo específico para a página de impressão */
 @media print {
-    *{
-        margin: 0;
-        padding: 0;
-    }
-    body {
-        font-family: Arial, sans-serif;
-        font-size: 10px;
-        color: black;
-        margin: 0;
-        padding: 0;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: black;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+  }
 
-    /* Remover logo e input de file */
-    img, #htmlInput, button, .impt {
-        display: none;
-    }
+  /* Remover logo e input de file */
+  img,
+  #htmlInput,
+  button,
+  .impt {
+    display: none;
+  }
 
-    table {
-        width: 100%;
-    }
-    tr, td, th {
-        padding: 0;
-        margin: 0;
-    }
-    .wrapper {
-        margin: 0px; /* Adicionando um espaçamento ao redor do wrapper */
-        overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
-        padding: 0px;
-    }
-    label {
-        font-size: 20px;
-    }
-    #resultTable th,
-#resultTable td,
-#tabelaRenderizada td,
-#tabelaRenderizada th,
-table td,
-table th {
+  table {
+    width: 100%;
+  }
+  tr,
+  td,
+  th {
+    padding: 0;
+    margin: 0;
+  }
+  .wrapper {
+    margin: 0px; /* Adicionando um espaçamento ao redor do wrapper */
+    overflow-y: auto; /* Adicionando rolagem vertical ao wrapper */
+    padding: 0px;
+  }
+  label {
+    font-size: 20px;
+  }
+  #resultTable th,
+  #resultTable td,
+  #tabelaRenderizada td,
+  #tabelaRenderizada th,
+  table td,
+  table th {
     padding: 02px;
     text-align: center;
     border: 1px solid #ddd;
     color: #333;
-}
-#resultTableContainer{
+  }
+  #resultTableContainer {
     margin-top: -40px;
-}
-
+  }
+  .doc {
+    display: none;
+  }
+  p{
+    color: #333;
+  }
+  #nomeArquivo{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #333;
+    display: flex;
+  }
 }
