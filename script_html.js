@@ -46,16 +46,18 @@ function processarTabela(htmlText) {
 
     // 1. Remover colunas e linhas da tabela
     console.log('Removendo colunas e linhas da tabela...');
-    const colunasRemover = [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
+    const colunasRemover = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
     const linhasRemover = [1, 2, 3, 4];
     removerColunasLinhas(tabelaOriginal, colunasRemover, linhasRemover);
 
     // 2-4. Armazenar dados das colunas em objetos
     const numeroProduto = extrairValoresColuna(tabelaOriginal, 1, 'Produto');
     console.log(numeroProduto)
-    const descricaoProduto = extrairValoresColuna(tabelaOriginal, 2, 'Produto');
+    const codigoProduto = extrairValoresColuna(tabelaOriginal, 2, 'Produto');
+    console.log(codigoProduto)
+    const descricaoProduto = extrairValoresColuna(tabelaOriginal, 3, 'Produto');
     console.log(descricaoProduto)
-    const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 3, 'Produto');
+    const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
     console.log(valorLiquidoUnitario)
 
     // 5. Calcular preço de venda e armazenar em um objeto
@@ -65,13 +67,14 @@ function processarTabela(htmlText) {
 
     // 6. Renderizar os objetos no console
     console.log('Objeto numeroProduto:', numeroProduto);
+    console.log('Objeto codigoProduto:', codigoProduto);
     console.log('Objeto descricaoProduto:', descricaoProduto);
     console.log('Objeto valorLiquidoUnitario:', valorLiquidoUnitario);
     console.log('Objeto precoVenda:', precoVenda);
 
     // 7. Criar uma nova tabela com os dados dos objetos
     console.log('Criando uma nova tabela com os dados dos objetos...');
-    criarNovaTabela(numeroProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
+    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
 
     console.log('Processamento concluído.');
 }
@@ -126,7 +129,7 @@ function calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao) {
 
 
 // Função para criar uma nova tabela com os dados dos objetos
-function criarNovaTabela(numeroProduto, descricaoProduto, valorLiquidoUnitario, precoVenda) {
+function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda) {
     const tabelaNova = document.createElement('table');
     tabelaNova.style.width = '100%';
     tabelaNova.style.borderCollapse = 'collapse';
@@ -136,7 +139,7 @@ function criarNovaTabela(numeroProduto, descricaoProduto, valorLiquidoUnitario, 
     const cabecalho = tabelaNova.createTHead();
     const linhaCabecalho = cabecalho.insertRow();
 
-    const colunas = ['Número do Produto', 'Descrição', 'Valor Unitário Líquido', 'Preço de Venda'];
+    const colunas = ['Número do Produto','Código', 'Descrição', 'Valor Unitário Líquido', 'Preço de Venda'];
 
     colunas.forEach((coluna) => {
         const celula = linhaCabecalho.insertCell();
@@ -151,6 +154,9 @@ function criarNovaTabela(numeroProduto, descricaoProduto, valorLiquidoUnitario, 
 
         const celulaNumeroProduto = linha.insertCell();
         celulaNumeroProduto.textContent = numeroProduto[chave];
+
+        const celulaCodigoProduto = linha.insertCell();
+        celulaCodigoProduto.textContent = codigoProduto[chave];
 
         const celulaDescricaoProduto = linha.insertCell();
         celulaDescricaoProduto.textContent = descricaoProduto[chave];
