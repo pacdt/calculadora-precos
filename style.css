@@ -156,7 +156,7 @@ button:hover {
   color: #333;
 }
 #nomeArquivo{
-    display: none;
+display: none;
 }
 
 /* IMPRESSÃO */
@@ -213,7 +213,7 @@ button:hover {
     color: #333;
   }
   #resultTableContainer {
-    margin-top: -40px;
+    margin-top: -18px;
   }
   .doc {
     display: none;
@@ -222,9 +222,13 @@ button:hover {
     color: #333;
   }
   #nomeArquivo{
-    font-size: 18px;
+    font-size: 12px;
     text-transform: uppercase;
-    color: #333;
-    display: flex;
+    color: #000000;
+    display: block;
+  }
+  #fator{
+    padding: 0;
+    margin-bottom: 10px;
   }
 }
