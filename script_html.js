@@ -139,7 +139,7 @@ function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLi
     const cabecalho = tabelaNova.createTHead();
     const linhaCabecalho = cabecalho.insertRow();
 
-    const colunas = ['Número do Produto','Código', 'Descrição', 'Valor Unitário Líquido', 'Preço de Venda'];
+    const colunas = ['Número do Produto','Código', 'Descrição', 'Valor Unitário Bruto', 'Preço de Venda'];
 
     colunas.forEach((coluna) => {
         const celula = linhaCabecalho.insertCell();
