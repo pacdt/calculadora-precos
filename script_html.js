@@ -69,7 +69,7 @@ function processarTabela(htmlText) {
     console.log('Objeto numeroProduto:', numeroProduto);
     console.log('Objeto codigoProduto:', codigoProduto);
     console.log('Objeto descricaoProduto:', descricaoProduto);
-    console.log('Objeto valorLiquidoUnitario:', valorLiquidoUnitario);
+    console.log('Objeto valorBrutoUnitario:', valorBrutoUnitario);
     console.log('Objeto precoVenda:', precoVenda);
 
     // 7. Criar uma nova tabela com os dados dos objetos
