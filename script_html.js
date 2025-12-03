@@ -46,7 +46,7 @@ function processarTabela(htmlText) {
 
     // 1. Remover colunas e linhas da tabela
     console.log('Removendo colunas e linhas da tabela...');
-    const colunasRemover = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
+    const colunasRemover = [2, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
     const linhasRemover = [1, 2, 3, 4];
     removerColunasLinhas(tabelaOriginal, colunasRemover, linhasRemover);
 
@@ -57,13 +57,13 @@ function processarTabela(htmlText) {
     console.log(codigoProduto)
     const descricaoProduto = extrairValoresColuna(tabelaOriginal, 3, 'Produto');
     console.log(descricaoProduto)
-    const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
-    console.log(valorLiquidoUnitario)
+    const valorBrutoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
+    console.log(valorBrutoUnitario)
 
     // 5. Calcular preço de venda e armazenar em um objeto
     console.log('Calculando o preço de venda...');
     const fatorMultiplicacao = parseFloat(document.getElementById('fator').value) || 1;
-    const precoVenda = calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao);
+    const precoVenda = calcularPrecoVenda(valorBrutoUnitario, fatorMultiplicacao);
 
     // 6. Renderizar os objetos no console
     console.log('Objeto numeroProduto:', numeroProduto);
@@ -74,7 +74,7 @@ function processarTabela(htmlText) {
 
     // 7. Criar uma nova tabela com os dados dos objetos
     console.log('Criando uma nova tabela com os dados dos objetos...');
-    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
+    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorBrutoUnitario, precoVenda);
 
     console.log('Processamento concluído.');
 }
