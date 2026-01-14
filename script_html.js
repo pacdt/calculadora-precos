@@ -46,7 +46,10 @@ function processarTabela(htmlText) {
 
     // 1. Remover colunas e linhas da tabela
     console.log('Removendo colunas e linhas da tabela...');
-    const colunasRemover = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
+        // Valor unitário líquido
+    // const colunasRemover = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
+        // Valor unitário bruto
+    const colunasRemover = [2, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
     const linhasRemover = [1, 2, 3, 4];
     removerColunasLinhas(tabelaOriginal, colunasRemover, linhasRemover);
 
@@ -57,8 +60,12 @@ function processarTabela(htmlText) {
     console.log(codigoProduto)
     const descricaoProduto = extrairValoresColuna(tabelaOriginal, 3, 'Produto');
     console.log(descricaoProduto)
-    const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
-    console.log(valorLiquidoUnitario)
+        // Valor unitário bruto
+    const valorBrutoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
+    console.log(valorBrutoUnitario)
+        // Valor unitário líquido
+    // const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
+    // console.log(valorLiquidoUnitario)
 
     // 5. Calcular preço de venda e armazenar em um objeto
     console.log('Calculando o preço de venda...');
@@ -69,12 +76,18 @@ function processarTabela(htmlText) {
     console.log('Objeto numeroProduto:', numeroProduto);
     console.log('Objeto codigoProduto:', codigoProduto);
     console.log('Objeto descricaoProduto:', descricaoProduto);
-    console.log('Objeto valorLiquidoUnitario:', valorLiquidoUnitario);
+        // Valor unitário líquido
+    // console.log('Objeto valorLiquidoUnitario:', valorLiquidoUnitario);
+        // Valor unitário bruto
+    console.log('Objeto valorBrutoUnitario:', valorBrutoUnitario);
     console.log('Objeto precoVenda:', precoVenda);
 
     // 7. Criar uma nova tabela com os dados dos objetos
     console.log('Criando uma nova tabela com os dados dos objetos...');
-    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
+        // Valor unitário líquido
+    // criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
+        // Valor unitário bruto
+    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorBrutoUnitario, precoVenda);
 
     console.log('Processamento concluído.');
 }
