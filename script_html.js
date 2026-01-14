@@ -70,7 +70,10 @@ function processarTabela(htmlText) {
     // 5. Calcular preço de venda e armazenar em um objeto
     console.log('Calculando o preço de venda...');
     const fatorMultiplicacao = parseFloat(document.getElementById('fator').value) || 1;
-    const precoVenda = calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao);
+        // Valor unitário líquido
+    // const precoVenda = calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao);
+        // Valor unitário bruto
+    const precoVenda = calcularPrecoVenda(valorBrutoUnitario, fatorMultiplicacao);
 
     // 6. Renderizar os objetos no console
     console.log('Objeto numeroProduto:', numeroProduto);
