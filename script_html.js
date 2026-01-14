@@ -4,6 +4,7 @@ let nomeArquivoHTML = ''
 function gerarPrecos() {
     const htmlInput = document.getElementById('htmlInput');
     const fatorInput = document.getElementById('fator'); // Adicionado para obter o campo do fator
+    const tipoValor = document.getElementById('tipoValor').value;
 
     const file = htmlInput.files[0];
     const fatorMultiplicacao = fatorInput.value.trim(); // Obtendo o valor do fator de multiplicação
@@ -22,7 +23,7 @@ function gerarPrecos() {
         const htmlText = e.target.result;
 
         // Renderizar a tabela e realizar as tarefas adicionais
-        processarTabela(htmlText, fatorMultiplicacao);
+        processarTabela(htmlText, tipoValor);
     };
 
     reader.readAsText(file, 'UTF-8'); // Adicionado parâmetro para especificar a codificação
@@ -30,7 +31,7 @@ function gerarPrecos() {
 
 
 // Função para processar a tabela
-function processarTabela(htmlText) {
+function processarTabela(htmlText, tipoValor) {
     console.log('Iniciando processamento da tabela...');
 
     const parser = new DOMParser();
@@ -46,51 +47,34 @@ function processarTabela(htmlText) {
 
     // 1. Remover colunas e linhas da tabela
     console.log('Removendo colunas e linhas da tabela...');
-        // Valor unitário líquido
-    // const colunasRemover = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
-        // Valor unitário bruto
-    const colunasRemover = [2, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
+    const colunasRemoverLiquido = [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15];
+    const colunasRemoverBruto = [2, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15];
+    const colunasRemover = tipoValor === 'bruto' ? colunasRemoverBruto : colunasRemoverLiquido;
     const linhasRemover = [1, 2, 3, 4];
     removerColunasLinhas(tabelaOriginal, colunasRemover, linhasRemover);
 
     // 2-4. Armazenar dados das colunas em objetos
     const numeroProduto = extrairValoresColuna(tabelaOriginal, 1, 'Produto');
-    console.log(numeroProduto)
     const codigoProduto = extrairValoresColuna(tabelaOriginal, 2, 'Produto');
-    console.log(codigoProduto)
     const descricaoProduto = extrairValoresColuna(tabelaOriginal, 3, 'Produto');
-    console.log(descricaoProduto)
-        // Valor unitário bruto
-    const valorBrutoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
-    console.log(valorBrutoUnitario)
-        // Valor unitário líquido
-    // const valorLiquidoUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
-    // console.log(valorLiquidoUnitario)
+    const valorUnitario = extrairValoresColuna(tabelaOriginal, 4, 'Produto');
 
     // 5. Calcular preço de venda e armazenar em um objeto
     console.log('Calculando o preço de venda...');
     const fatorMultiplicacao = parseFloat(document.getElementById('fator').value) || 1;
-        // Valor unitário líquido
-    // const precoVenda = calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao);
-        // Valor unitário bruto
-    const precoVenda = calcularPrecoVenda(valorBrutoUnitario, fatorMultiplicacao);
+    const precoVenda = calcularPrecoVenda(valorUnitario, fatorMultiplicacao);
 
-    // 6. Renderizar os objetos no console
+    // Debug
     console.log('Objeto numeroProduto:', numeroProduto);
     console.log('Objeto codigoProduto:', codigoProduto);
     console.log('Objeto descricaoProduto:', descricaoProduto);
-        // Valor unitário líquido
-    // console.log('Objeto valorLiquidoUnitario:', valorLiquidoUnitario);
-        // Valor unitário bruto
-    console.log('Objeto valorBrutoUnitario:', valorBrutoUnitario);
+    console.log('Objeto valorUnitario:', valorUnitario);
     console.log('Objeto precoVenda:', precoVenda);
 
     // 7. Criar uma nova tabela com os dados dos objetos
     console.log('Criando uma nova tabela com os dados dos objetos...');
-        // Valor unitário líquido
-    // criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda);
-        // Valor unitário bruto
-    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorBrutoUnitario, precoVenda);
+    const headerName = tipoValor === 'bruto' ? 'Valor Unitário Bruto' : 'Valor Unitário Líquido';
+    criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorUnitario, precoVenda, headerName);
 
     console.log('Processamento concluído.');
 }
@@ -114,11 +98,11 @@ function extrairValoresColuna(tabela, indiceColuna, prefixoChave) {
 
 
 // Função para calcular o preço de venda com arredondamento personalizado e formatar em Real BRL
-function calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao) {
+function calcularPrecoVenda(valorUnitario, fatorMultiplicacao) {
     const precoVenda = {};
 
-    for (const produto in valorLiquidoUnitario) {
-        const valor = parseFloat(valorLiquidoUnitario[produto].replace(',', '.')) || 0;
+    for (const produto in valorUnitario) {
+        const valor = parseFloat(String(valorUnitario[produto]).replace(',', '.')) || 0;
         const fator = parseFloat(String(fatorMultiplicacao).replace(',', '.')) || 1;
         let valorCalculado = valor * fator;
 
@@ -145,7 +129,7 @@ function calcularPrecoVenda(valorLiquidoUnitario, fatorMultiplicacao) {
 
 
 // Função para criar uma nova tabela com os dados dos objetos
-function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLiquidoUnitario, precoVenda) {
+function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorUnitario, precoVenda, headerName) {
     const tabelaNova = document.createElement('table');
     tabelaNova.style.width = '100%';
     tabelaNova.style.borderCollapse = 'collapse';
@@ -155,7 +139,7 @@ function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLi
     const cabecalho = tabelaNova.createTHead();
     const linhaCabecalho = cabecalho.insertRow();
 
-    const colunas = ['Número do Produto','Código', 'Descrição', 'Valor Unitário Líquido', 'Preço de Venda'];
+    const colunas = ['Número do Produto','Código', 'Descrição', headerName || 'Valor Unitário', 'Preço de Venda'];
 
     colunas.forEach((coluna) => {
         const celula = linhaCabecalho.insertCell();
@@ -177,8 +161,8 @@ function criarNovaTabela(numeroProduto, codigoProduto, descricaoProduto, valorLi
         const celulaDescricaoProduto = linha.insertCell();
         celulaDescricaoProduto.textContent = descricaoProduto[chave];
 
-        const celulaValorLiquido = linha.insertCell();
-        celulaValorLiquido.textContent = valorLiquidoUnitario[chave];
+        const celulaValor = linha.insertCell();
+        celulaValor.textContent = valorUnitario[chave];
 
         const celulaPrecoVenda = linha.insertCell();
         celulaPrecoVenda.textContent = precoVenda[chave];
